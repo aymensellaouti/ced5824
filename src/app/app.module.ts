@@ -10,6 +10,7 @@ import { FirstComponent } from './components/first/first.component';
 import { SecondComponent } from './components/second/second.component';
 import { ColorComponent } from './components/color/color.component';
 import { TwoComponent } from './components/two/two.component';
+import { RotatingCardComponent } from './components/rotating-card/rotating-card.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TwoComponent } from './components/two/two.component';
     FirstComponent,
     SecondComponent,
     ColorComponent,
-    TwoComponent
+    TwoComponent,
+    RotatingCardComponent
   ],
   imports: [
     BrowserModule,
