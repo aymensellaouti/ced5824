@@ -22,6 +22,12 @@ import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RainbowDirective } from './directives/rainbow.directive';
 import { DefaultImagePipe } from './pipes/default-image.pipe';
+import { LOGGER_INJECTION_TOKEN } from './injection tokens/logger.injection-token';
+import { loggerFactory } from './provider factories/logger.provider-factory';
+import { SayHelloService } from './services/say-hello.service';
+import { LoggerService } from './services/logger.service';
+import { Logger2Service } from './services/logger2.service';
+import { TodoComponent } from './todo/todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -41,14 +47,34 @@ import { DefaultImagePipe } from './pipes/default-image.pipe';
     MiniWordComponent,
     HighlightDirective,
     RainbowDirective,
-    DefaultImagePipe
+    DefaultImagePipe,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOGGER_INJECTION_TOKEN,
+      useFactory: loggerFactory
+    },
+    {
+      provide: LoggerService,
+      useClass: LoggerService,
+      multi: true
+    },
+    {
+      provide: LoggerService,
+      useClass: Logger2Service,
+      multi: true
+    },
+    {
+      provide: SayHelloService,
+      useClass: SayHelloService
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

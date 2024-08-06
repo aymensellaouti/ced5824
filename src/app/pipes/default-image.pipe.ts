@@ -7,6 +7,7 @@ import { APP_CONSTS } from '../config/constantes.config';
 export class DefaultImagePipe implements PipeTransform {
 
   transform(path: string): string {
+    console.log('DefaultImagePipe');
     return path.trim() ? path : APP_CONSTS.defaultImage;
   }
 
