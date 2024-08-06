@@ -5,8 +5,8 @@
 }">mini-word works!</p>
 
 <div class="row">
-  <div class="col"><input [(ngModel)]="color" type="color" class="form-control" /></div>
-  <div class="col"><input [(ngModel)]="size" type="number" class="form-control" /></div>
+  <div class="col"><input appRainbow [(ngModel)]="color" type="color" class="form-control" /></div>
+  <div class="col"><input appRainbow [(ngModel)]="size" type="number" class="form-control" /></div>
   <div class="col">
     <select [(ngModel)]="fontFamily" class="form-control">
       <option value="garamond">garamond</option>
@@ -15,7 +15,7 @@
     </select>
   </div>
 </div>
-
+<input type="text" appRainbow>
 <div appHighlight>test</div>
 <div appHighlight [in]="'red'" [out]="'white'">test</div>
 <div appHighlight [in]="'white'" [out]="'black'">test</div>

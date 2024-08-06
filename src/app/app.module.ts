@@ -20,6 +20,7 @@ import { CvCardComponent } from './cv/cv-card/cv-card.component';
 import { IsEvenComponent } from './components/is-even/is-even.component';
 import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { HighlightDirective } from './directives/highlight.directive';
+import { RainbowDirective } from './directives/rainbow.directive';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HighlightDirective } from './directives/highlight.directive';
     CvCardComponent,
     IsEvenComponent,
     MiniWordComponent,
-    HighlightDirective
+    HighlightDirective,
+    RainbowDirective
   ],
   imports: [
     BrowserModule,
