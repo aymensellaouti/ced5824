@@ -9,16 +9,20 @@ import { TodoService } from "../service/todo.service";
 
 })
 export class TodoComponent {
-
+  todos: Todo[] = [];
+  todo = new Todo();
+  todoService = inject(TodoService);
  constructor() {
+  this.todos = this.todoService.getTodos();
   }
 
   addTodo() {
-
+    this.todoService.addTodo(this.todo);
+    this.todo = new Todo();
   }
 
-  deleteTodo() {
-
+  deleteTodo(todo: Todo): void {
+    this.todoService.deleteTodo(todo);
   }
 
 }
