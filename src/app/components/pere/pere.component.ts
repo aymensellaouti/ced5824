@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./pere.component.css'],
 })
 export class PereComponent {
+  age = 0;
   constructor() {
     console.log('je suis le pere');
   }

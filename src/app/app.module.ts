@@ -17,6 +17,9 @@ import { CvComponent } from './cv/cv/cv.component';
 import { ListcvsComponent } from './cv/listcvs/listcvs.component';
 import { CvItemComponent } from './cv/cv-item/cv-item.component';
 import { CvCardComponent } from './cv/cv-card/cv-card.component';
+import { IsEvenComponent } from './components/is-even/is-even.component';
+import { MiniWordComponent } from './directives/mini-word/mini-word.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { CvCardComponent } from './cv/cv-card/cv-card.component';
     CvComponent,
     ListcvsComponent,
     CvItemComponent,
-    CvCardComponent
+    CvCardComponent,
+    IsEvenComponent,
+    MiniWordComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
