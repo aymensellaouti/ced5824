@@ -36,6 +36,8 @@ import  {v4 as uuidV4} from 'uuid';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
+import { TestFormComponent } from './form/test-form/test-form.component';
+import { LoginComponent } from './auth/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +61,9 @@ import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
     WeekTodoComponent,
     EmbaucheComponent,
     NavbarComponent,
-    DetailsCvComponent
+    DetailsCvComponent,
+    TestFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
