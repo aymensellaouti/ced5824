@@ -38,6 +38,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 import { TestFormComponent } from './form/test-form/test-form.component';
 import { LoginComponent } from './auth/login/login.component';
+import { TestRxjsComponent } from './rxjs/test-rxjs/test-rxjs.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +64,8 @@ import { LoginComponent } from './auth/login/login.component';
     NavbarComponent,
     DetailsCvComponent,
     TestFormComponent,
-    LoginComponent
+    LoginComponent,
+    TestRxjsComponent
   ],
   imports: [
     BrowserModule,

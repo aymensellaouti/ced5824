@@ -17,10 +17,10 @@ export class CvComponent {
   selectedCv: Cv | null = null;
   todoService = inject(TodoService);
   // sayHello = new SayHelloService();
-  onSelectCv(cv: Cv) {
-    this.selectedCv = cv;
-    this.todoService.logTodos();
-  }
+  // onSelectCv(cv: Cv) {
+  //   this.selectedCv = cv;
+  //   this.todoService.logTodos();
+  // }
   constructor(
     @Inject(LoggerService)
     private loggers: LoggerService[],
@@ -28,5 +28,9 @@ export class CvComponent {
   ) {
     this.loggers.forEach((logger) => logger.logger('hello :D'));
     this.sayHello.hello();
+    this.cvService.selectCv$.subscribe(
+      (cv) => this.selectedCv = cv,
+    );
+
   }
 }
