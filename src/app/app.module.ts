@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 
 
@@ -53,37 +55,39 @@ import { EmbaucheComponent } from './cv/embauche/embauche.component';
     DefaultImagePipe,
     TodoComponent,
     WeekTodoComponent,
-    EmbaucheComponent
+    EmbaucheComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [
     {
       provide: LOGGER_INJECTION_TOKEN,
-      useFactory: loggerFactory
+      useFactory: loggerFactory,
     },
     {
       provide: LoggerService,
       useClass: LoggerService,
-      multi: true
+      multi: true,
     },
     {
       provide: LoggerService,
       useClass: Logger2Service,
-      multi: true
+      multi: true,
     },
     {
       provide: SayHelloService,
-      useClass: SayHelloService
+      useClass: SayHelloService,
     },
     {
       provide: UUID_PROVIDER,
-      useValue: uuidV4
-    }
+      useValue: uuidV4,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
