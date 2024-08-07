@@ -28,7 +28,10 @@ import { SayHelloService } from './services/say-hello.service';
 import { LoggerService } from './services/logger.service';
 import { Logger2Service } from './services/logger2.service';
 import { TodoComponent } from './todo/todo/todo.component';
-
+import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
+import { UUID_PROVIDER } from './injection tokens/uuid.injection-token';
+import  {v4 as uuidV4} from 'uuid';
+import { EmbaucheComponent } from './cv/embauche/embauche.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,9 @@ import { TodoComponent } from './todo/todo/todo.component';
     HighlightDirective,
     RainbowDirective,
     DefaultImagePipe,
-    TodoComponent
+    TodoComponent,
+    WeekTodoComponent,
+    EmbaucheComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +78,10 @@ import { TodoComponent } from './todo/todo/todo.component';
     {
       provide: SayHelloService,
       useClass: SayHelloService
+    },
+    {
+      provide: UUID_PROVIDER,
+      useValue: uuidV4
     }
   ],
   bootstrap: [AppComponent]

@@ -1,8 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { Cv } from '../model/cv.model';
 import { LOGGER_INJECTION_TOKEN } from 'src/app/injection tokens/logger.injection-token';
 import { LoggerService } from 'src/app/services/logger.service';
 import { SayHelloService } from 'src/app/services/say-hello.service';
+import { TodoService } from 'src/app/todo/service/todo.service';
 
 @Component({
   selector: 'app-cv',
@@ -31,9 +32,11 @@ export class CvComponent {
     ),
   ];
   selectedCv: Cv | null = null;
+  todoService = inject(TodoService);
   // sayHello = new SayHelloService();
   onSelectCv(cv: Cv) {
     this.selectedCv = cv;
+    this.todoService.logTodos();
   }
   constructor(
     @Inject(LoggerService)
