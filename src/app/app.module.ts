@@ -34,6 +34,7 @@ import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import { UUID_PROVIDER } from './injection tokens/uuid.injection-token';
 import  {v4 as uuidV4} from 'uuid';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +57,7 @@ import { EmbaucheComponent } from './cv/embauche/embauche.component';
     TodoComponent,
     WeekTodoComponent,
     EmbaucheComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
