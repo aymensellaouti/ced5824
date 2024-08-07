@@ -9,5 +9,9 @@ import { EmbaucheService } from '../services/embauche.service';
   styleUrls: ['./embauche.component.css'],
 })
 export class EmbaucheComponent {
-  public embauchees: Cv[] = [];
+  embaucheService = inject( EmbaucheService );
+  public embauchees: Cv[] = this.embaucheService.getEmbauchees();
+
+
+
 }

@@ -7,10 +7,6 @@ import { Cv } from '../model/cv.model';
 export class EmbaucheService {
   #embauchees: Cv[] = [];
 
-  /**
-   * Retourne la liste des cvs
-   * @returns Cv[]
-   */
   getEmbauchees(): Cv[] {
     return this.#embauchees;
   }
@@ -22,6 +18,11 @@ export class EmbaucheService {
    * @returns {boolean} return true si embauchée false sinon
    */
   embaucher(cv: Cv): boolean {
+    const index = this.#embauchees.indexOf(cv);
+    if (index === -1) {
+      this.#embauchees.push(cv);
+      return true;
+    }
     return false;
   }
 }

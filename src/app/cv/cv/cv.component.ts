@@ -4,6 +4,7 @@ import { LOGGER_INJECTION_TOKEN } from 'src/app/injection tokens/logger.injectio
 import { LoggerService } from 'src/app/services/logger.service';
 import { SayHelloService } from 'src/app/services/say-hello.service';
 import { TodoService } from 'src/app/todo/service/todo.service';
+import { CvService } from '../services/cv.service';
 
 @Component({
   selector: 'app-cv',
@@ -11,26 +12,8 @@ import { TodoService } from 'src/app/todo/service/todo.service';
   styleUrls: ['./cv.component.css'],
 })
 export class CvComponent {
-  cvs = [
-    new Cv(
-      1,
-      'sellaouti',
-      'aymen',
-      'trainer',
-      '123',
-      42,
-      ''
-    ),
-    new Cv(
-      2,
-      'Dali',
-      'sourour',
-      'Dev',
-      '1234',
-      20,
-      '     '
-    ),
-  ];
+  cvService = inject(CvService);
+  cvs = this.cvService.getCvs();
   selectedCv: Cv | null = null;
   todoService = inject(TodoService);
   // sayHello = new SayHelloService();
