@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -39,6 +40,8 @@ import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 import { TestFormComponent } from './form/test-form/test-form.component';
 import { LoginComponent } from './auth/login/login.component';
 import { TestRxjsComponent } from './rxjs/test-rxjs/test-rxjs.component';
+import { AddCvComponent } from './cv/add-cv/add-cv.component';
+import { authInterceptorProvider } from './auth/interceptors/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,12 +68,14 @@ import { TestRxjsComponent } from './rxjs/test-rxjs/test-rxjs.component';
     DetailsCvComponent,
     TestFormComponent,
     LoginComponent,
-    TestRxjsComponent
+    TestRxjsComponent,
+    AddCvComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
   ],
@@ -97,6 +102,7 @@ import { TestRxjsComponent } from './rxjs/test-rxjs/test-rxjs.component';
       provide: UUID_PROVIDER,
       useValue: uuidV4,
     },
+    authInterceptorProvider,
   ],
   bootstrap: [AppComponent],
 })

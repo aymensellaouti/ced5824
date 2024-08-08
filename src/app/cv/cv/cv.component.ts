@@ -5,6 +5,7 @@ import { LoggerService } from 'src/app/services/logger.service';
 import { SayHelloService } from 'src/app/services/say-hello.service';
 import { TodoService } from 'src/app/todo/service/todo.service';
 import { CvService } from '../services/cv.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cv',
@@ -13,7 +14,7 @@ import { CvService } from '../services/cv.service';
 })
 export class CvComponent {
   cvService = inject(CvService);
-  cvs = this.cvService.getCvs();
+  cvs : Cv[] = [];
   selectedCv: Cv | null = null;
   todoService = inject(TodoService);
   // sayHello = new SayHelloService();
@@ -24,13 +25,21 @@ export class CvComponent {
   constructor(
     @Inject(LoggerService)
     private loggers: LoggerService[],
-    private sayHello: SayHelloService
+    private sayHello: SayHelloService,
+    private toastr: ToastrService
   ) {
     this.loggers.forEach((logger) => logger.logger('hello :D'));
-    this.sayHello.hello();
+    this.cvService.getCvs().subscribe({
+      next: (cvs) => {
+        this.cvs = cvs;
+      },
+      error: (err) => {
+        toastr.error('Les donnees sont fictives merci de contacter l admin')
+        this.cvs = this.cvService.getFakeCvs();
+      }
+    })
     this.cvService.selectCv$.subscribe(
       (cv) => this.selectedCv = cv,
     );
-
   }
 }

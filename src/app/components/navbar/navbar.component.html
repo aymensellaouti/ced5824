@@ -7,10 +7,16 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link" routerLinkActive="active text-primary" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['']">Accueil</a>
       <a class="nav-item nav-link" routerLinkActive="active text-primary" [routerLink]="['cv']">Cv</a>
+      <a
+        *ngIf="authService.isAuthenticated()"
+        class="nav-item nav-link" routerLinkActive="active text-primary" [routerLink]="['cv','add']">Add Cv</a>
       <a class="nav-item nav-link" routerLinkActive="active text-primary" [routerLink]="['todo']">Todo</a>
       <a class="nav-item nav-link" routerLinkActive="active text-primary" [routerLink]="['word']">Word</a>
       <a class="nav-item nav-link" routerLinkActive="active text-primary" [routerLink]="['color']">Color</a>
-      <a class="nav-item nav-link" routerLinkActive="active text-primary" [routerLink]="['login']">Login</a>
+      <a
+        *ngIf="!authService.isAuthenticated()"
+        class="nav-item nav-link" routerLinkActive="active text-primary" [routerLink]="['login']">Login</a>
+      <a *ngIf="authService.isAuthenticated()" class="nav-item nav-link" (click)="logout()" >Logout</a>
     </div>
   </div>
 </nav>

@@ -1,6 +1,8 @@
-import {  Injectable } from '@angular/core';
+import {  inject, Injectable } from '@angular/core';
 import { Cv } from '../model/cv.model';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { APP_API } from 'src/app/config/api.config';
 
 
 @Injectable({
@@ -15,12 +17,44 @@ export class CvService {
   #selectCvSuject$ = new Subject<Cv>();
 
   selectCv$ = this.#selectCvSuject$.asObservable();
+  http = inject(HttpClient);
+  /**
+   * Retourne la liste des cvs
+   * @returns Cv[]
+   */
+  getCvs(): Observable<Cv[]> {
+    return this.http.get<Cv[]>(APP_API.cv);
+  }
+
+  /**
+   *
+   * Cherche un cv avec son id
+   *
+   * @param id
+   * @returns Observable<Cv>
+   * @throws Exception 404
+   */
+  getCvById(id: number): Observable<Cv> {
+    return this.http.get<Cv>(APP_API.cv + id);
+  }
+
+  /**
+   *
+   * Supprime un cv s'il le trouve
+   *
+   * @param cv : Cv
+   * @returns boolean
+   */
+  deleteCvById(cv: Cv): Observable<{count: number}> {
+    const headers = new HttpHeaders().set('Authorization', localStorage.getItem('token') ?? '')
+    return this.http.delete<{ count: number }>(APP_API.cv + cv.id, {headers});
+  }
 
   /**
    * Retourne la liste des cvs
    * @returns Cv[]
    */
-  getCvs(): Cv[] {
+  getFakeCvs(): Cv[] {
     return this.#cvs;
   }
 

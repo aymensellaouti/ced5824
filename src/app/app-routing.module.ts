@@ -9,16 +9,19 @@ import { SecondComponent } from './components/second/second.component';
 import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 import { APP_ROUTES } from './config/routes.config';
 import { LoginComponent } from './auth/login/login.component';
+import { AddCvComponent } from './cv/add-cv/add-cv.component';
+import { authGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: FirstComponent},
-  { path: APP_ROUTES.cv, component: CvComponent},
-  { path: 'cv/:id', component: DetailsCvComponent},
-  { path: 'todo', component: TodoComponent},
-  { path: 'word', component: MiniWordComponent},
-  { path: 'color', component: ColorComponent},
-  { path: APP_ROUTES.login, component: LoginComponent},
-  { path: ':7aja', component: SecondComponent},
+  { path: '', component: FirstComponent },
+  { path: APP_ROUTES.cv, component: CvComponent },
+  { path: `${APP_ROUTES.cv}/add`, component: AddCvComponent, canActivate: [authGuard] },
+  { path: `${APP_ROUTES.cv}/:id`, component: DetailsCvComponent },
+  { path: 'todo', component: TodoComponent },
+  { path: 'word', component: MiniWordComponent },
+  { path: 'color', component: ColorComponent },
+  { path: APP_ROUTES.login, component: LoginComponent },
+  { path: ':7aja', component: SecondComponent },
 ];
 
 @NgModule({
