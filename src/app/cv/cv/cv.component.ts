@@ -3,9 +3,10 @@ import { Cv } from '../model/cv.model';
 import { LOGGER_INJECTION_TOKEN } from 'src/app/injection tokens/logger.injection-token';
 import { LoggerService } from 'src/app/services/logger.service';
 import { SayHelloService } from 'src/app/services/say-hello.service';
-import { TodoService } from 'src/app/todo/service/todo.service';
+// import { TodoService } from 'src/app/todo/service/todo.service';
 import { CvService } from '../services/cv.service';
 import { ToastrService } from 'ngx-toastr';
+import { catchError, Observable, of, retry } from 'rxjs';
 
 @Component({
   selector: 'app-cv',
@@ -14,9 +15,18 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CvComponent {
   cvService = inject(CvService);
-  cvs : Cv[] = [];
-  selectedCv: Cv | null = null;
-  todoService = inject(TodoService);
+  cvs$: Observable<Cv[]> = this.cvService.getCvs().pipe(
+    retry({
+      count: 2,
+      delay: 3000
+    }),
+    catchError((e) => {
+      this.toastr.error('Les donnees sont fictives merci de contacter l admin');
+      return of(this.cvService.getFakeCvs());
+    })
+  );
+  selectedCv$: Observable<Cv | null> = this.cvService.selectCv$;
+  // todoService = inject(TodoService);
   // sayHello = new SayHelloService();
   // onSelectCv(cv: Cv) {
   //   this.selectedCv = cv;
@@ -29,17 +39,15 @@ export class CvComponent {
     private toastr: ToastrService
   ) {
     this.loggers.forEach((logger) => logger.logger('hello :D'));
-    this.cvService.getCvs().subscribe({
-      next: (cvs) => {
-        this.cvs = cvs;
-      },
-      error: (err) => {
-        toastr.error('Les donnees sont fictives merci de contacter l admin')
-        this.cvs = this.cvService.getFakeCvs();
-      }
-    })
-    this.cvService.selectCv$.subscribe(
-      (cv) => this.selectedCv = cv,
-    );
+    // this.cvService.getCvs().subscribe({
+    //   next: (cvs) => {
+    //     this.cvs = cvs;
+    //   },
+    //   error: (err) => {
+    //     toastr.error('Les donnees sont fictives merci de contacter l admin');
+    //     this.cvs = this.cvService.getFakeCvs();
+    //   },
+    // });
+    // this.cvService.selectCv$.subscribe((cv) => (this.selectedCv = cv));
   }
 }
