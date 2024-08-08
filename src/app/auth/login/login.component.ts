@@ -18,7 +18,6 @@ export class LoginComponent {
   login(loginForm: NgForm) {
     this.authService.login(loginForm.value).subscribe({
       next: (response) => {
-        localStorage.setItem('token', response.id);
         this.router.navigate([APP_ROUTES.cv]);
       },
       error: (e) => {

@@ -46,8 +46,7 @@ export class CvService {
    * @returns boolean
    */
   deleteCvById(cv: Cv): Observable<{count: number}> {
-    const headers = new HttpHeaders().set('Authorization', localStorage.getItem('token') ?? '')
-    return this.http.delete<{ count: number }>(APP_API.cv + cv.id, {headers});
+    return this.http.delete<{ count: number }>(APP_API.cv + cv.id);
   }
 
   /**

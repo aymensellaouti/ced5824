@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { LoginResonse } from '../dto/login-response.dto';
 import { Credentials } from '../dto/credentials.dto';
 import { HttpClient } from '@angular/common/http';
@@ -13,7 +13,9 @@ export class AuthService {
   http = inject(HttpClient);
   login(credentials: Credentials): Observable<LoginResonse> {
     // Todo: Appeler l'api avec les credentials et retourner un observable
-    return this.http.post<LoginResonse>(APP_API.login, credentials);
+    return this.http.post<LoginResonse>(APP_API.login, credentials).pipe(
+      tap((response) => this.saveToken(response.id))
+    );
   }
 
   isAuthenticated(): boolean {

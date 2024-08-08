@@ -42,6 +42,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { TestRxjsComponent } from './rxjs/test-rxjs/test-rxjs.component';
 import { AddCvComponent } from './cv/add-cv/add-cv.component';
 import { authInterceptorProvider } from './auth/interceptors/auth.interceptor';
+import { SliderComponent } from './rxjs/slider/slider.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +71,8 @@ import { authInterceptorProvider } from './auth/interceptors/auth.interceptor';
     LoginComponent,
     TestRxjsComponent,
     AddCvComponent,
+
+    SliderComponent
   ],
   imports: [
     BrowserModule,
