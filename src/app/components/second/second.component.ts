@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-second',
-  template: `<p>Second</p>`,
+  template: `<p>Second</p><router-outlet/>`,
   styles: [``],
 })
 export class SecondComponent {

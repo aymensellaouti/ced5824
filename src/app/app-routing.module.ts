@@ -15,9 +15,12 @@ import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [
   { path: '', component: FirstComponent },
-  { path: APP_ROUTES.cv, component: CvComponent },
-  { path: `${APP_ROUTES.cv}/add`, component: AddCvComponent, canActivate: [authGuard] },
-  { path: `${APP_ROUTES.cv}/:id`, component: DetailsCvComponent },
+  { path: `${APP_ROUTES.cv}`, component:SecondComponent, children: [
+     { path: '', component: CvComponent },
+     { path: 'add', component: AddCvComponent, canActivate: [authGuard] },
+     { path: `:id`, component: DetailsCvComponent },
+  ]
+  },
   { path: 'todo', component: TodoComponent },
   { path: 'word', component: MiniWordComponent },
   { path: 'color', component: ColorComponent },
