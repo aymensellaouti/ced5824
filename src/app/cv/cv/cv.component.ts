@@ -7,6 +7,7 @@ import { SayHelloService } from 'src/app/services/say-hello.service';
 import { CvService } from '../services/cv.service';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, Observable, of, retry } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cv',
@@ -15,16 +16,7 @@ import { catchError, Observable, of, retry } from 'rxjs';
 })
 export class CvComponent {
   cvService = inject(CvService);
-  cvs$: Observable<Cv[]> = this.cvService.getCvs().pipe(
-    retry({
-      count: 2,
-      delay: 3000
-    }),
-    catchError((e) => {
-      this.toastr.error('Les donnees sont fictives merci de contacter l admin');
-      return of(this.cvService.getFakeCvs());
-    })
-  );
+  cvs: Cv[] = inject(ActivatedRoute).snapshot.data['cvs'];
   selectedCv$: Observable<Cv | null> = this.cvService.selectCv$;
   // todoService = inject(TodoService);
   // sayHello = new SayHelloService();

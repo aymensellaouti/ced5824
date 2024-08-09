@@ -45,6 +45,8 @@ import { authInterceptorProvider } from './auth/interceptors/auth.interceptor';
 import { SliderComponent } from './rxjs/slider/slider.component';
 import { ProductsComponent } from './products/products.component';
 import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component';
+import { MasterDetailCvComponent } from './cv/master-detail-cv/master-detail-cv.component';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +79,8 @@ import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component'
     SliderComponent,
 
     ProductsComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    MasterDetailCvComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +90,7 @@ import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component'
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    NgxUiLoaderModule,
   ],
   providers: [
     {
