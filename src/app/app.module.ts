@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -43,6 +43,8 @@ import { TestRxjsComponent } from './rxjs/test-rxjs/test-rxjs.component';
 import { AddCvComponent } from './cv/add-cv/add-cv.component';
 import { authInterceptorProvider } from './auth/interceptors/auth.interceptor';
 import { SliderComponent } from './rxjs/slider/slider.component';
+import { ProductsComponent } from './products/products.component';
+import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,12 +74,16 @@ import { SliderComponent } from './rxjs/slider/slider.component';
     TestRxjsComponent,
     AddCvComponent,
 
-    SliderComponent
+    SliderComponent,
+
+    ProductsComponent,
+    AutocompleteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
