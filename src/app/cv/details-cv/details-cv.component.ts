@@ -31,9 +31,8 @@ export class DetailsCvComponent {
     // })
   }
 
-  deleteCv() {
-    if (this.cv) {
-      this.cvService.deleteCvById(this.cv).subscribe({
+  deleteCv(cv: Cv) {
+      this.cvService.deleteCvById(cv).subscribe({
         next: () => {
           this.router.navigate([APP_ROUTES.cv]);
         },
@@ -41,6 +40,5 @@ export class DetailsCvComponent {
           console.log(e);
         },
       });
-    }
   }
 }

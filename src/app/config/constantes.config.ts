@@ -1,4 +1,5 @@
 export const APP_CONSTS = {
   defaultImage: 'tim_logo.png',
-  tokenKey: 'token'
+  tokenKey: 'token',
+  connectedUser: 'connectedUser'
 };

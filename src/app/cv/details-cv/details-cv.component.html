@@ -34,8 +34,8 @@
             </table>
             <div class="d-flex justify-content-center">
               <button
-              *ngIf="authService.isAuthenticated()"
-              (click)="deleteCv()"
+                *ngIf="authService.isLoggedIn$ | async"
+                (click)="deleteCv(cv)"
                 class="btn btn-danger">
                 Delete
               </button>

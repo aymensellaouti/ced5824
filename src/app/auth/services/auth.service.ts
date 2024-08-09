@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject, tap } from 'rxjs';
 import { LoginResonse } from '../dto/login-response.dto';
 import { Credentials } from '../dto/credentials.dto';
 import { HttpClient } from '@angular/common/http';
@@ -17,18 +17,37 @@ export interface ConnectedUser {
 })
 export class AuthService {
   http = inject(HttpClient);
+  #connectedUser$: BehaviorSubject<ConnectedUser | null> = new BehaviorSubject(
+    this.getConnectedUser()
+  );
+  connectedUser$ = this.#connectedUser$.asObservable();
+  isLoggedIn$: Observable<boolean> = this.connectedUser$.pipe(
+    map((user) => !!user)
+  );
+  isLoggedOut$: Observable<boolean> = this.connectedUser$.pipe(
+    map((user) => !user)
+  );
 
-  connectedUser$!: Subject<ConnectedUser | null>;
-  isLoggedIn$!: Observable<boolean>;
-  isLoggedOut$!: Observable<boolean>;
   login(credentials: Credentials): Observable<LoginResonse> {
     // Todo: Appeler l'api avec les credentials et retourner un observable
     return this.http.post<LoginResonse>(APP_API.login, credentials).pipe(
-      tap((response) => this.saveToken(response.id))
+      tap((response) => {
+        this.saveData(response, credentials);
+        this.#connectedUser$.next({
+          id: response.userId,
+          email: credentials.email,
+        });
+      })
     );
   }
+
   logout() {
+    this.clearStorage();
+    this.#connectedUser$.next(null);
+  }
+  clearStorage() {
     this.clearToken();
+    localStorage.removeItem(APP_CONSTS.connectedUser);
   }
 
   isAuthenticated(): boolean {
@@ -47,5 +66,19 @@ export class AuthService {
     localStorage.setItem(APP_CONSTS.tokenKey, tokenValue);
   }
 
+  getConnectedUser(): ConnectedUser | null {
+    const user = localStorage.getItem(APP_CONSTS.connectedUser);
+    return user ? JSON.parse(user) : null;
+  }
 
+  saveData(response: LoginResonse, credentials: Credentials): void {
+    this.saveToken(response.id);
+    this.saveUser(credentials.email, response.userId);
+  }
+  saveUser(email: string, id: number) {
+    localStorage.setItem(
+      APP_CONSTS.connectedUser,
+      JSON.stringify({ id, email })
+    );
+  }
 }
