@@ -11,6 +11,7 @@ import { APP_ROUTES } from './config/routes.config';
 import { LoginComponent } from './auth/login/login.component';
 import { AddCvComponent } from './cv/add-cv/add-cv.component';
 import { authGuard } from './auth/guards/auth.guard';
+import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [
   { path: '', component: FirstComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'todo', component: TodoComponent },
   { path: 'word', component: MiniWordComponent },
   { path: 'color', component: ColorComponent },
+  { path: 'products', component: ProductsComponent },
   { path: APP_ROUTES.login, component: LoginComponent },
   { path: ':7aja', component: SecondComponent },
 ];

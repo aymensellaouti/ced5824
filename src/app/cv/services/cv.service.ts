@@ -1,7 +1,7 @@
 import {  inject, Injectable } from '@angular/core';
 import { Cv } from '../model/cv.model';
 import { Observable, Subject } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { APP_API } from 'src/app/config/api.config';
 
 
@@ -38,6 +38,14 @@ export class CvService {
     return this.http.get<Cv>(APP_API.cv + id);
   }
 
+  getCvsByName(name: string): Observable<Cv[]> {
+    const params = new HttpParams().set(
+      'filter',
+      `{"where":{"name":{"like":"%${name}%"}}}`
+    );
+    return this.http.get<Cv[]>(APP_API.cv, { params });
+  }
+
   /**
    *
    * Supprime un cv s'il le trouve
@@ -45,7 +53,7 @@ export class CvService {
    * @param cv : Cv
    * @returns boolean
    */
-  deleteCvById(cv: Cv): Observable<{count: number}> {
+  deleteCvById(cv: Cv): Observable<{ count: number }> {
     return this.http.delete<{ count: number }>(APP_API.cv + cv.id);
   }
 
