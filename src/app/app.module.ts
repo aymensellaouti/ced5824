@@ -47,6 +47,8 @@ import { ProductsComponent } from './products/products.component';
 import { AutocompleteComponent } from './cv/autocomplete/autocomplete.component';
 import { MasterDetailCvComponent } from './cv/master-detail-cv/master-detail-cv.component';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { RhComponent } from './optimizationPattern/rh/rh.component';
+import { UserListComponent } from './optimizationPattern/user-list/user-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,30 +59,39 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     RotatingCardComponent,
     PereComponent,
     FilsComponent,
+
+    // Cv
     CvComponent,
     ListcvsComponent,
     CvItemComponent,
     CvCardComponent,
+    EmbaucheComponent,
+    AddCvComponent,
+    AutocompleteComponent,
+    MasterDetailCvComponent,
+    DetailsCvComponent,
+
+    //Directives
     IsEvenComponent,
     MiniWordComponent,
     HighlightDirective,
     RainbowDirective,
     DefaultImagePipe,
+
     TodoComponent,
     WeekTodoComponent,
-    EmbaucheComponent,
     NavbarComponent,
-    DetailsCvComponent,
     TestFormComponent,
     LoginComponent,
+
+    //RxJS
     TestRxjsComponent,
-    AddCvComponent,
-
     SliderComponent,
-
     ProductsComponent,
-    AutocompleteComponent,
-    MasterDetailCvComponent,
+
+    //Optimization
+    RhComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
