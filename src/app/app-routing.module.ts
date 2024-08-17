@@ -14,6 +14,7 @@ import { authGuard } from './auth/guards/auth.guard';
 import { ProductsComponent } from './products/products.component';
 import { MasterDetailCvComponent } from './cv/master-detail-cv/master-detail-cv.component';
 import { cvsResolver } from './cv/resolvers/cvs.resolver';
+import { RhComponent } from './optimizationPattern/rh/rh.component';
 
 const routes: Routes = [
   { path: '', component: FirstComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'word', component: MiniWordComponent },
   { path: 'color', component: ColorComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'rh', component: RhComponent },
   { path: APP_ROUTES.login, component: LoginComponent },
   { path: ':7aja', component: SecondComponent },
 ];
