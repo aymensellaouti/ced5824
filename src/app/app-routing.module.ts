@@ -35,7 +35,7 @@ const routes: Routes = [
       { path: `:id`, component: DetailsCvComponent },
     ],
   },
-  { path: 'todo', component: TodoComponent },
+
   { path: 'word', component: MiniWordComponent },
   { path: 'color', component: ColorComponent },
   { path: 'products', component: ProductsComponent },

@@ -30,8 +30,6 @@ import { loggerFactory } from './provider factories/logger.provider-factory';
 import { SayHelloService } from './services/say-hello.service';
 import { LoggerService } from './services/logger.service';
 import { Logger2Service } from './services/logger2.service';
-import { TodoComponent } from './todo/todo/todo.component';
-import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import { UUID_PROVIDER } from './injection tokens/uuid.injection-token';
 import  {v4 as uuidV4} from 'uuid';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
@@ -49,6 +47,7 @@ import { MasterDetailCvComponent } from './cv/master-detail-cv/master-detail-cv.
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { RhComponent } from './optimizationPattern/rh/rh.component';
 import { UserListComponent } from './optimizationPattern/user-list/user-list.component';
+import { TodoModule } from './todo/todo.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,8 +77,7 @@ import { UserListComponent } from './optimizationPattern/user-list/user-list.com
     RainbowDirective,
     DefaultImagePipe,
 
-    TodoComponent,
-    WeekTodoComponent,
+
     NavbarComponent,
     TestFormComponent,
     LoginComponent,
@@ -95,6 +93,7 @@ import { UserListComponent } from './optimizationPattern/user-list/user-list.com
   ],
   imports: [
     BrowserModule,
+    TodoModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
