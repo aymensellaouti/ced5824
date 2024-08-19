@@ -57,7 +57,7 @@ export class CvService {
   getCvsByProperty(property: string, value: string): Observable<Cv[]> {
     const params = new HttpParams().set(
       'filter',
-      `{"where":{"${property}":"%${value}%"}}`
+      `{"where":{"${property}":"${value}"}}`
     );
     return this.http.get<Cv[]>(APP_API.cv, { params });
   }
