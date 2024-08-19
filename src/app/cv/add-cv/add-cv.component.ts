@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { APP_CONSTS } from 'src/app/config/constantes.config';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { uniqueCinValidator } from 'src/app/validators/unique-cin.validator';
+import { ageCinValidator } from 'src/app/validators/age-cin.validator';
 @Component({
   selector: 'app-add-cv',
   templateUrl: './add-cv.component.html',
@@ -19,26 +20,33 @@ export class AddCvComponent {
   cvService = inject(CvService);
   router = inject(Router);
   toastr = inject(ToastrService);
-  form = this.formBuilder.group({
-    name: ['', Validators.required],
-    firstname: ['', Validators.required],
-    path: [''],
-    job: ['', Validators.required],
-    cin: [
-      '',
-      {
-        validators: [Validators.required, Validators.pattern('\d{8}')],
-        asyncValidators: [uniqueCinValidator(this.cvService)],
-      },
-    ],
-    age: [
-      0,
-      {
-        validators: [Validators.required],
-        updateOn: 'blur',
-      },
-    ],
-  });
+  form = this.formBuilder.group(
+    {
+      name: ['', Validators.required],
+      firstname: ['', Validators.required],
+      path: [''],
+      job: ['', Validators.required],
+      cin: [
+        '',
+        {
+          validators: [Validators.required, Validators.pattern('[0-9]{8}')],
+          asyncValidators: [uniqueCinValidator(this.cvService)],
+        },
+      ],
+      age: [
+        0,
+        {
+          validators: [Validators.required],
+          updateOn: 'blur',
+        },
+      ],
+    },
+    {
+      validators: [ageCinValidator()],
+      asyncValidators: [],
+      updateOn: 'change',
+    }
+  );
   constructor() {
     const savedForm = localStorage.getItem(APP_CONSTS.addForm);
     if (savedForm) {
