@@ -8,6 +8,7 @@ import { APP_ROUTES } from 'src/app/config/routes.config';
 import { ToastrService } from 'ngx-toastr';
 import { APP_CONSTS } from 'src/app/config/constantes.config';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { uniqueCinValidator } from 'src/app/validators/unique-cin.validator';
 @Component({
   selector: 'app-add-cv',
   templateUrl: './add-cv.component.html',
@@ -26,19 +27,19 @@ export class AddCvComponent {
     cin: [
       '',
       {
-        validators: [Validators.required, Validators.pattern('[0-8]{8}')],
+        validators: [Validators.required, Validators.pattern('\d{8}')],
+        asyncValidators: [uniqueCinValidator(this.cvService)],
       },
     ],
     age: [
       0,
       {
         validators: [Validators.required],
-        updateOn: 'blur'
+        updateOn: 'blur',
       },
     ],
   });
   constructor() {
-
     const savedForm = localStorage.getItem(APP_CONSTS.addForm);
     if (savedForm) {
       this.form.setValue(JSON.parse(savedForm));
@@ -74,19 +75,22 @@ export class AddCvComponent {
     //     this.toastr.error(`Une erreur s'est produite, Veuillez contacter l'admin`);
     //   },
     // });
-    this.cvService.addCv(this.form.value as Cv).pipe(
-      tap(cv => {
-        localStorage.removeItem(APP_CONSTS.addForm);
-        this.router.navigate([APP_ROUTES.cv]);
-        this.toastr.success(`Le cv ${cv.firstname} ${cv.name}`);
-      }),
-      catchError(e => {
-        this.toastr.error(
-          `Une erreur s'est produite, Veuillez contacter l'admin`
-        );
-        return EMPTY;
-      })
-    ).subscribe();
+    this.cvService
+      .addCv(this.form.value as Cv)
+      .pipe(
+        tap((cv) => {
+          localStorage.removeItem(APP_CONSTS.addForm);
+          this.router.navigate([APP_ROUTES.cv]);
+          this.toastr.success(`Le cv ${cv.firstname} ${cv.name}`);
+        }),
+        catchError((e) => {
+          this.toastr.error(
+            `Une erreur s'est produite, Veuillez contacter l'admin`
+          );
+          return EMPTY;
+        })
+      )
+      .subscribe();
   }
 
   get name(): AbstractControl {
