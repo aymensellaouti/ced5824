@@ -12,16 +12,16 @@ export class AppComponent {
   router = inject(Router);
   ngxService = inject(NgxUiLoaderService);
   constructor() {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        this.ngxService.start();
-      } else if (
-        event instanceof NavigationEnd ||
-        event instanceof NavigationCancel ||
-        event instanceof NavigationError
-      ) {
-        this.ngxService.stop();
-      }
-    });
+    // this.router.events.subscribe((event) => {
+    //   if (event instanceof NavigationStart) {
+    //     this.ngxService.start();
+    //   } else if (
+    //     event instanceof NavigationEnd ||
+    //     event instanceof NavigationCancel ||
+    //     event instanceof NavigationError
+    //   ) {
+    //     this.ngxService.stop();
+    //   }
+    // });
   }
 }
