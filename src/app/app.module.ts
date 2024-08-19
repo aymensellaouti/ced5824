@@ -37,8 +37,9 @@ import { ProductsComponent } from './products/products.component';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { RhComponent } from './optimizationPattern/rh/rh.component';
 import { UserListComponent } from './optimizationPattern/user-list/user-list.component';
-import { TodoModule } from './todo/todo.module';
-import { CvModule } from './cv/cv/cv.module';
+import { CvModule } from './cv/cv.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,

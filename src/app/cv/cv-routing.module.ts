@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { authGuard } from 'src/app/auth/guards/auth.guard';
-import { APP_ROUTES } from 'src/app/config/routes.config';
-import { AddCvComponent } from '../add-cv/add-cv.component';
-import { DetailsCvComponent } from '../details-cv/details-cv.component';
-import { MasterDetailCvComponent } from '../master-detail-cv/master-detail-cv.component';
-import { cvsResolver } from '../resolvers/cvs.resolver';
-import { CvComponent } from './cv.component';
+import { authGuard } from '../auth/guards/auth.guard';
+import { APP_ROUTES } from '../config/routes.config';
+import { AddCvComponent } from './add-cv/add-cv.component';
+import { CvComponent } from './cv/cv.component';
+import { DetailsCvComponent } from './details-cv/details-cv.component';
+import { MasterDetailCvComponent } from './master-detail-cv/master-detail-cv.component';
+import { cvsResolver } from './resolvers/cvs.resolver';
+
 
 const routes: Routes = [
   {
