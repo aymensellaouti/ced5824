@@ -19,23 +19,11 @@ import { RhComponent } from './optimizationPattern/rh/rh.component';
 const routes: Routes = [
   { path: '', component: FirstComponent },
   {
-    path: `${APP_ROUTES.cv}`,
-    children: [
-      {
-        path: '',
-        component: CvComponent,
-        resolve: { cvs: cvsResolver }
-      },
-      { path: 'add', component: AddCvComponent, canActivate: [authGuard] },
-      {
-        path: 'list',
-        component: MasterDetailCvComponent,
-        children: [{ path: `:id`, component: DetailsCvComponent }],
-      },
-      { path: `:id`, component: DetailsCvComponent },
-    ],
+    path: 'todo',
+    loadChildren: () => import('./todo/todo.module').then(
+      m => m.TodoModule
+    )
   },
-
   { path: 'word', component: MiniWordComponent },
   { path: 'color', component: ColorComponent },
   { path: 'products', component: ProductsComponent },
