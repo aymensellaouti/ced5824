@@ -27,6 +27,15 @@ export class CvService {
   }
 
   /**
+   * Retourne le cv ajouté
+   * @param cv: Cv
+   * @returns Cv
+   */
+  addCv(cv: Partial<Cv>): Observable<Cv> {
+    return this.http.post<Cv>(APP_API.cv, cv);
+  }
+
+  /**
    *
    * Cherche un cv avec son id
    *
