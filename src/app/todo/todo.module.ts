@@ -4,11 +4,18 @@ import { WeekTodoComponent } from "./week-todo/week-todo.component";
 import { TodoRoutingModule } from "./todo-routing.module";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { StoreModule } from "@ngrx/store";
+import { todoReducer } from "./store/reducer";
 
 
 
 @NgModule({
   declarations: [TodoComponent, WeekTodoComponent],
-  imports: [TodoRoutingModule, FormsModule, CommonModule],
+  imports: [
+    TodoRoutingModule,
+    FormsModule,
+    CommonModule,
+    StoreModule.forFeature("todo", todoReducer)
+  ],
 })
 export class TodoModule {}

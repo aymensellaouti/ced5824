@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { FirstComponent } from './components/first/first.component';
 import { CvComponent } from './cv/cv/cv.component';
 import { TodoComponent } from './todo/todo/todo.component';
@@ -15,14 +15,20 @@ import { ProductsComponent } from './products/products.component';
 import { MasterDetailCvComponent } from './cv/master-detail-cv/master-detail-cv.component';
 import { cvsResolver } from './cv/resolvers/cvs.resolver';
 import { RhComponent } from './optimizationPattern/rh/rh.component';
+import { CustomPreloadingStrategy } from './prloadingStrategies/custom.preloading-strategy';
 
 const routes: Routes = [
   { path: '', component: FirstComponent },
   {
     path: 'todo',
-    loadChildren: () => import('./todo/todo.module').then(
-      m => m.TodoModule
-    )
+    loadChildren: () => import('./todo/todo.module').then((m) => m.TodoModule),
+  },
+  {
+    path: `${APP_ROUTES.cv}`,
+    loadChildren: () => import('./cv/cv.module'),
+    data: {
+      preload: true,
+    }
   },
   { path: 'word', component: MiniWordComponent },
   { path: 'color', component: ColorComponent },
@@ -36,6 +42,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       bindToComponentInputs: true,
+      preloadingStrategy: CustomPreloadingStrategy,
     }),
   ],
   exports: [RouterModule],

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -37,7 +37,9 @@ import { ProductsComponent } from './products/products.component';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { RhComponent } from './optimizationPattern/rh/rh.component';
 import { UserListComponent } from './optimizationPattern/user-list/user-list.component';
-import { CvModule } from './cv/cv.module';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './store/reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -71,7 +73,6 @@ import { CvModule } from './cv/cv.module';
   ],
   imports: [
     BrowserModule,
-    CvModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -79,6 +80,8 @@ import { CvModule } from './cv/cv.module';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     NgxUiLoaderModule,
+    StoreModule.forRoot({ ux: appReducer }, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [
     {

@@ -11,7 +11,7 @@ import { cvsResolver } from './resolvers/cvs.resolver';
 
 const routes: Routes = [
   {
-    path: `${APP_ROUTES.cv}`,
+    path: ``,
     children: [
       {
         path: '',

@@ -30,4 +30,4 @@ import { MasterDetailCvComponent } from './master-detail-cv/master-detail-cv.com
   ],
   imports: [CommonModule, CvRoutingModule, ReactiveFormsModule],
 })
-export class CvModule {}
+export default class CvModule {}
