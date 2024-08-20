@@ -11,7 +11,7 @@ import { initAppAction } from './store/actions';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'ced5824';
+  title = 'ced5824 ';
   router = inject(Router);
   ngxService = inject(NgxUiLoaderService);
   store = inject(Store<AppState>);
