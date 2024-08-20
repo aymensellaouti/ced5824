@@ -6,6 +6,8 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { StoreModule } from "@ngrx/store";
 import { todoReducer } from "./store/reducer";
+import { EffectsModule } from "@ngrx/effects";
+import { TodoEffect } from "./store/todo.effect";
 
 
 
@@ -15,7 +17,8 @@ import { todoReducer } from "./store/reducer";
     TodoRoutingModule,
     FormsModule,
     CommonModule,
-    StoreModule.forFeature("todo", todoReducer)
+    StoreModule.forFeature('todo', todoReducer),
+    EffectsModule.forFeature([TodoEffect]),
   ],
 })
 export class TodoModule {}

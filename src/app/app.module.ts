@@ -40,6 +40,7 @@ import { UserListComponent } from './optimizationPattern/user-list/user-list.com
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -82,6 +83,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     NgxUiLoaderModule,
     StoreModule.forRoot({ ux: appReducer }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {
