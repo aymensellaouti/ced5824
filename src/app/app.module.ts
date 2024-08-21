@@ -46,6 +46,7 @@ import { TestCdComponent } from './cd/test-cd/test-cd.component';
 import { TestCdFilsComponent } from './cd/test-cd-fils/test-cd-fils.component';
 import { DisplayUserListComponent } from './rh/display-user-list/display-user-list.component';
 import { FiboPipe } from './rh/pipe/fibo.pipe';
+import { FirstSignalComponent } from './signal/first-signal/first-signal.component';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import { FiboPipe } from './rh/pipe/fibo.pipe';
     UserListComponent,
     DisplayUserListComponent,
     FiboPipe,
+    FirstSignalComponent,
   ],
   imports: [
     BrowserModule,
