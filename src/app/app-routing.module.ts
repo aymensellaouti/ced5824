@@ -16,6 +16,7 @@ import { MasterDetailCvComponent } from './cv/master-detail-cv/master-detail-cv.
 import { cvsResolver } from './cv/resolvers/cvs.resolver';
 import { RhComponent } from './optimizationPattern/rh/rh.component';
 import { CustomPreloadingStrategy } from './prloadingStrategies/custom.preloading-strategy';
+import { SignalTodoComponent } from './todo/signal-todo/signal-todo.component';
 
 const routes: Routes = [
   { path: '', component: FirstComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
       preload: true,
     }
   },
+  { path: 'signalTodo', component: SignalTodoComponent },
   { path: 'word', component: MiniWordComponent },
   { path: 'color', component: ColorComponent },
   { path: 'products', component: ProductsComponent },

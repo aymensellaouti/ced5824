@@ -47,6 +47,9 @@ import { TestCdFilsComponent } from './cd/test-cd-fils/test-cd-fils.component';
 import { DisplayUserListComponent } from './rh/display-user-list/display-user-list.component';
 import { FiboPipe } from './rh/pipe/fibo.pipe';
 import { FirstSignalComponent } from './signal/first-signal/first-signal.component';
+import { ListTodosComponent } from './todo/list-todos/list-todos.component';
+import { SignalTodo } from './todo/model/signalTodo.model';
+import { SignalTodoComponent } from './todo/signal-todo/signal-todo.component';
 
 
 @NgModule({
@@ -82,6 +85,9 @@ import { FirstSignalComponent } from './signal/first-signal/first-signal.compone
     DisplayUserListComponent,
     FiboPipe,
     FirstSignalComponent,
+
+    ListTodosComponent,
+    SignalTodoComponent
   ],
   imports: [
     BrowserModule,

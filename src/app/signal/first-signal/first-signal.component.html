@@ -1,4 +1,5 @@
 <p>first-signal works!</p>
-<input type="number" [(ngModel)]="x"> , <input type="number" [(ngModel)]="y">
+<input #input1 type="number" [value]="x()" (change)="updateSignal(x, input1.value)"> ,
+<input #input2 type="number" [value]="y()" (change)="updateSignal(y, input2.value)">
 
-<p>{{ z }}</p>
+<p>{{ z() }}</p>
