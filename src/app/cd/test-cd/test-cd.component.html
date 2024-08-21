@@ -1,0 +1,7 @@
+<p>test-cd works!</p>
+
+
+<input type="text" [(ngModel)]="name">
+<input type="text" #emailInput (keyup)="change(emailInput.value)">
+
+<app-test-cd-fils [name]="name" [user]="user"/>

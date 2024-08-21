@@ -42,6 +42,10 @@ import { appReducer } from './store/reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { TestCdComponent } from './cd/test-cd/test-cd.component';
+import { TestCdFilsComponent } from './cd/test-cd-fils/test-cd-fils.component';
+import { DisplayUserListComponent } from './rh/display-user-list/display-user-list.component';
+import { FiboPipe } from './rh/pipe/fibo.pipe';
 
 
 @NgModule({
@@ -68,10 +72,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     TestRxjsComponent,
     SliderComponent,
     ProductsComponent,
+    TestCdComponent,
+    TestCdFilsComponent,
 
     //Optimization
     RhComponent,
     UserListComponent,
+    DisplayUserListComponent,
+    FiboPipe,
   ],
   imports: [
     BrowserModule,
