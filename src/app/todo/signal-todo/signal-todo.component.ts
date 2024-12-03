@@ -1,8 +1,6 @@
 import { Component, computed, inject, Signal, signal } from "@angular/core";
 
 
-import { FormsModule } from "@angular/forms";
-import { ListTodosComponent } from "../list-todos/list-todos.component";
 import { SignalTodoService } from "./signal-todo.service";
 import { SignalTodo, TodoStatusEnum } from "../model/signalTodo.model";
 
