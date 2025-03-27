@@ -6,12 +6,20 @@ import { TodoState } from "../store/reducer";
 import { Observable } from "rxjs";
 import { selectTodos } from "../store/selector";
 import { todoActionGroup } from "../store/actions";
+import { FormsModule } from "@angular/forms";
+import { NgFor, AsyncPipe } from "@angular/common";
 
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.css'],
-  providers: [TodoService],
+    selector: 'app-todo',
+    templateUrl: './todo.component.html',
+    styleUrls: ['./todo.component.css'],
+    providers: [TodoService],
+    standalone: true,
+    imports: [
+        NgFor,
+        FormsModule,
+        AsyncPipe,
+    ],
 })
 export class TodoComponent {
   store = inject(Store<TodoState>);

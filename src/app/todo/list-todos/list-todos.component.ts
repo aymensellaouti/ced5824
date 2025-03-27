@@ -1,12 +1,16 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { SignalTodo, TodoStatusEnum } from "../model/signalTodo.model";
+import { FormsModule } from "@angular/forms";
+import { NgFor } from "@angular/common";
 
 
 
 @Component({
-  selector: "app-list-todos",
-  templateUrl: "./list-todos.component.html",
-  styleUrls: ["./list-todos.component.css"],
+    selector: "app-list-todos",
+    templateUrl: "./list-todos.component.html",
+    styleUrls: ["./list-todos.component.css"],
+    standalone: true,
+    imports: [NgFor, FormsModule],
 })
 export class ListTodosComponent {
   status = Object.values(TodoStatusEnum);

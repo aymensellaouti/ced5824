@@ -1,16 +1,26 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Observable,  Subscription,  debounce,  debounceTime, distinctUntilChanged, from, switchMap } from "rxjs";
 import { CvService } from "../services/cv.service";
 import { Router } from "@angular/router";
 import { Cv } from "../model/cv.model";
 import { APP_API } from "src/app/config/api.config";
 import { APP_ROUTES } from "src/app/config/routes.config";
+import { ListcvsComponent } from "../listcvs/listcvs.component";
+import { NgIf, AsyncPipe } from "@angular/common";
 
 @Component({
-  selector: 'app-autocomplete',
-  templateUrl: './autocomplete.component.html',
-  styleUrls: ['./autocomplete.component.css'],
+    selector: 'app-autocomplete',
+    templateUrl: './autocomplete.component.html',
+    styleUrls: ['./autocomplete.component.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        ListcvsComponent,
+        AsyncPipe,
+    ],
 })
 export class AutocompleteComponent implements OnDestroy {
   form!: FormGroup;

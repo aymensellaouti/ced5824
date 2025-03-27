@@ -8,11 +8,22 @@ import { CvService } from '../services/cv.service';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, Observable, of, retry } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
+import { EmbaucheComponent } from '../embauche/embauche.component';
+import { CvCardComponent } from '../cv-card/cv-card.component';
+import { ListcvsComponent } from '../listcvs/listcvs.component';
 
 @Component({
-  selector: 'app-cv',
-  templateUrl: './cv.component.html',
-  styleUrls: ['./cv.component.css'],
+    selector: 'app-cv',
+    templateUrl: './cv.component.html',
+    styleUrls: ['./cv.component.css'],
+    standalone: true,
+    imports: [
+        ListcvsComponent,
+        CvCardComponent,
+        EmbaucheComponent,
+        AsyncPipe,
+    ],
 })
 export class CvComponent {
   cvService = inject(CvService);

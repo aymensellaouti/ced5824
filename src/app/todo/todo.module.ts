@@ -12,13 +12,13 @@ import { TodoEffect } from "./store/todo.effect";
 
 
 @NgModule({
-  declarations: [TodoComponent, WeekTodoComponent],
-  imports: [
-    TodoRoutingModule,
-    FormsModule,
-    CommonModule,
-    StoreModule.forFeature('todo', todoReducer),
-    EffectsModule.forFeature([TodoEffect]),
-  ],
+    imports: [
+        TodoRoutingModule,
+        FormsModule,
+        CommonModule,
+        StoreModule.forFeature('todo', todoReducer),
+        EffectsModule.forFeature([TodoEffect]),
+        TodoComponent, WeekTodoComponent,
+    ],
 })
 export class TodoModule {}

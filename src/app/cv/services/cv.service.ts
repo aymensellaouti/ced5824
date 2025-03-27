@@ -110,5 +110,6 @@ export class CvService {
 
   selectCv(cv: Cv) {
     this.#selectCvSuject$.next(cv);
+    this.selectCv$
   }
 }

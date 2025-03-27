@@ -29,6 +29,7 @@ export class AuthService {
   );
 
   login(credentials: Credentials): Observable<LoginResonse> {
+
     // Todo: Appeler l'api avec les credentials et retourner un observable
     return this.http.post<LoginResonse>(APP_API.login, credentials).pipe(
       tap((response) => {
@@ -39,6 +40,8 @@ export class AuthService {
         });
       })
     );
+
+
   }
 
   logout() {

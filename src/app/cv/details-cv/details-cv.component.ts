@@ -5,11 +5,19 @@ import { CvService } from "../services/cv.service";
 import { APP_ROUTES } from "src/app/config/routes.config";
 import { AuthService } from "src/app/auth/services/auth.service";
 import { catchError, EMPTY, switchMap } from "rxjs";
+import { DefaultImagePipe } from "../../pipes/default-image.pipe";
+import { NgIf, AsyncPipe } from "@angular/common";
 
 @Component({
-  selector: 'app-details-cv',
-  templateUrl: './details-cv.component.html',
-  styleUrls: ['./details-cv.component.css'],
+    selector: 'app-details-cv',
+    templateUrl: './details-cv.component.html',
+    styleUrls: ['./details-cv.component.css'],
+    standalone: true,
+    imports: [
+        NgIf,
+        AsyncPipe,
+        DefaultImagePipe,
+    ],
 })
 export class DetailsCvComponent {
   cv: Cv | null = null;
@@ -25,7 +33,9 @@ export class DetailsCvComponent {
       })
     );
   constructor() {
-    // const id = this.acr.snapshot.params['id'];
+    console.log({'snapshot.params':this.acr.snapshot.params});
+
+    const id = this.acr.snapshot.params['id'];
     // this.cvService.getCvById(id).subscribe({
     //   next: (cv) => this.cv = cv,
     //   error: () => this.router.navigate([APP_ROUTES.cv])
@@ -41,5 +51,12 @@ export class DetailsCvComponent {
         console.log(e);
       },
     });
+  }
+
+  onLoadCv(id: number) {
+    // méthode conseillée
+    this.router.navigate(['cv', id]);
+    //alternative
+    this.router.navigate([`cv/${id}`]);
   }
 }

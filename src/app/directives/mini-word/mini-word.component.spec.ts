@@ -8,8 +8,8 @@ describe('MiniWordComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MiniWordComponent]
-    });
+    imports: [MiniWordComponent]
+});
     fixture = TestBed.createComponent(MiniWordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

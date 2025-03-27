@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Validators, AbstractControlOptions, FormBuilder, AbstractControl } from '@angular/forms';
+import { Validators, AbstractControlOptions, FormBuilder, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CvService } from '../services/cv.service';
 import { Cv } from '../model/cv.model';
 import { catchError, EMPTY, filter, tap } from 'rxjs';
@@ -10,10 +10,18 @@ import { APP_CONSTS } from 'src/app/config/constantes.config';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { uniqueCinValidator } from 'src/app/validators/unique-cin.validator';
 import { ageCinValidator } from 'src/app/validators/age-cin.validator';
+import { NgIf, JsonPipe } from '@angular/common';
 @Component({
-  selector: 'app-add-cv',
-  templateUrl: './add-cv.component.html',
-  styleUrls: ['./add-cv.component.css'],
+    selector: 'app-add-cv',
+    templateUrl: './add-cv.component.html',
+    styleUrls: ['./add-cv.component.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgIf,
+        JsonPipe,
+    ],
 })
 export class AddCvComponent {
   formBuilder = inject(FormBuilder);

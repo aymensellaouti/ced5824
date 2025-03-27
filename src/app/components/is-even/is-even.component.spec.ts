@@ -8,8 +8,8 @@ describe('IsEvenComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [IsEvenComponent]
-    });
+    imports: [IsEvenComponent]
+});
     fixture = TestBed.createComponent(IsEvenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

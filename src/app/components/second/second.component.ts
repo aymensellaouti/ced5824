@@ -1,10 +1,12 @@
 import { Component, inject, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-second',
-  template: `<p>Second</p><router-outlet/>`,
-  styles: [``],
+    selector: 'app-second',
+    template: `<p>Second</p><router-outlet/>`,
+    styles: [``],
+    standalone: true,
+    imports: [RouterOutlet],
 })
 export class SecondComponent {
   // V16 +

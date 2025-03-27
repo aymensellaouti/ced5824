@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, Input } from '@angular/core';
 import { combineLatest, map, Observable, timer } from 'rxjs';
+import { NgStyle, AsyncPipe } from '@angular/common';
 
 export interface ImagesResponse {
   success: boolean;
@@ -20,9 +21,11 @@ export interface Photo {
 }
 
 @Component({
-  selector: 'app-slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.css'],
+    selector: 'app-slider',
+    templateUrl: './slider.component.html',
+    styleUrls: ['./slider.component.css'],
+    standalone: true,
+    imports: [NgStyle, AsyncPipe],
 })
 export class SliderComponent {
   @Input() images: string[] = [

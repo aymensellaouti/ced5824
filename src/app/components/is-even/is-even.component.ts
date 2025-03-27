@@ -1,9 +1,10 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'app-is-even',
-  templateUrl: './is-even.component.html',
-  styleUrls: ['./is-even.component.css'],
+    selector: 'app-is-even',
+    templateUrl: './is-even.component.html',
+    styleUrls: ['./is-even.component.css'],
+    standalone: true,
 })
 export class IsEvenComponent {
   isEven = true;

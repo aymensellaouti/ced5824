@@ -53,86 +53,80 @@ import { SignalTodoComponent } from './todo/signal-todo/signal-todo.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FirstComponent,
-    SecondComponent,
-    ColorComponent,
-    TwoComponent,
-    RotatingCardComponent,
-    PereComponent,
-    FilsComponent,
-
-    //Directives
-    IsEvenComponent,
-    MiniWordComponent,
-    HighlightDirective,
-    RainbowDirective,
-    NavbarComponent,
-    TestFormComponent,
-    LoginComponent,
-
-    //RxJS
-    TestRxjsComponent,
-    SliderComponent,
-    ProductsComponent,
-    TestCdComponent,
-    TestCdFilsComponent,
-
-    //Optimization
-    RhComponent,
-    UserListComponent,
-    DisplayUserListComponent,
-    FiboPipe,
-    FirstSignalComponent,
-
-    ListTodosComponent,
-    SignalTodoComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
-    NgxUiLoaderModule,
-    StoreModule.forRoot({ ux: appReducer }, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([]),
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
-  ],
-  providers: [
-    {
-      provide: LOGGER_INJECTION_TOKEN,
-      useFactory: loggerFactory,
-    },
-    {
-      provide: LoggerService,
-      useClass: LoggerService,
-      multi: true,
-    },
-    {
-      provide: LoggerService,
-      useClass: Logger2Service,
-      multi: true,
-    },
-    {
-      provide: SayHelloService,
-      useClass: SayHelloService,
-    },
-    {
-      provide: UUID_PROVIDER,
-      useValue: uuidV4,
-    },
-    authInterceptorProvider,
-  ],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        NgxUiLoaderModule,
+        StoreModule.forRoot({ ux: appReducer }, {}),
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+        EffectsModule.forRoot([]),
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
+        FirstComponent,
+        SecondComponent,
+        ColorComponent,
+        TwoComponent,
+        RotatingCardComponent,
+        PereComponent,
+        FilsComponent,
+        //Directives
+        IsEvenComponent,
+        MiniWordComponent,
+        HighlightDirective,
+        RainbowDirective,
+        NavbarComponent,
+        TestFormComponent,
+        LoginComponent,
+        //RxJS
+        TestRxjsComponent,
+        SliderComponent,
+        ProductsComponent,
+        TestCdComponent,
+        TestCdFilsComponent,
+        //Optimization
+        RhComponent,
+        UserListComponent,
+        DisplayUserListComponent,
+        FiboPipe,
+        FirstSignalComponent,
+        ListTodosComponent,
+        SignalTodoComponent,
+    ],
+    providers: [
+        {
+            provide: LOGGER_INJECTION_TOKEN,
+            useFactory: loggerFactory,
+        },
+        {
+            provide: LoggerService,
+            useClass: LoggerService,
+            multi: true,
+        },
+        {
+            provide: UUID_PROVIDER,
+            useValue: uuidV4,
+        },
+        {
+            provide: LoggerService,
+            useClass: Logger2Service,
+            multi: true,
+        },
+        {
+            provide: SayHelloService,
+            useClass: SayHelloService,
+        },
+        authInterceptorProvider,
+    ],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

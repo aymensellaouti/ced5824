@@ -3,11 +3,15 @@ import { Component, computed, inject, Signal, signal } from "@angular/core";
 
 import { SignalTodoService } from "./signal-todo.service";
 import { SignalTodo, TodoStatusEnum } from "../model/signalTodo.model";
+import { ListTodosComponent } from "../list-todos/list-todos.component";
+import { FormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'app-signal-todo',
-  templateUrl: './signal-todo.component.html',
-  styleUrls: ['./signal-todo.component.css'],
+    selector: 'app-signal-todo',
+    templateUrl: './signal-todo.component.html',
+    styleUrls: ['./signal-todo.component.css'],
+    standalone: true,
+    imports: [FormsModule, ListTodosComponent],
 })
 export class SignalTodoComponent {
   $todos: Signal<SignalTodo[]>;

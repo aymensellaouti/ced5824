@@ -11,6 +11,7 @@ import { RhComponent } from './optimizationPattern/rh/rh.component';
 import { CustomPreloadingStrategy } from './prloadingStrategies/custom.preloading-strategy';
 import { SignalTodoComponent } from './todo/signal-todo/signal-todo.component';
 
+
 const routes: Routes = [
   { path: '', component: FirstComponent },
   {

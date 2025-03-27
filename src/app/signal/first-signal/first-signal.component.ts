@@ -1,9 +1,10 @@
 import { Component, computed, signal, WritableSignal } from '@angular/core';
 
 @Component({
-  selector: 'app-first-signal',
-  templateUrl: './first-signal.component.html',
-  styleUrls: ['./first-signal.component.css'],
+    selector: 'app-first-signal',
+    templateUrl: './first-signal.component.html',
+    styleUrls: ['./first-signal.component.css'],
+    standalone: true,
 })
 export class FirstSignalComponent {
   x = signal(5);

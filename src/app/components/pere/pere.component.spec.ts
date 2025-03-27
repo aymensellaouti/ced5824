@@ -8,8 +8,8 @@ describe('PereComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PereComponent]
-    });
+    imports: [PereComponent]
+});
     fixture = TestBed.createComponent(PereComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

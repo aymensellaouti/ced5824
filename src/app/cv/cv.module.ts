@@ -15,19 +15,17 @@ import { MasterDetailCvComponent } from './master-detail-cv/master-detail-cv.com
 
 
 @NgModule({
-  declarations: [
-    // Cv
-    CvComponent,
-    ListcvsComponent,
-    CvItemComponent,
-    CvCardComponent,
-    EmbaucheComponent,
-    AddCvComponent,
-    AutocompleteComponent,
-    MasterDetailCvComponent,
-    DetailsCvComponent,
-    DefaultImagePipe,
-  ],
-  imports: [CommonModule, CvRoutingModule, ReactiveFormsModule],
+    imports: [CommonModule, CvRoutingModule, ReactiveFormsModule, 
+        // Cv
+        CvComponent,
+        ListcvsComponent,
+        CvItemComponent,
+        CvCardComponent,
+        EmbaucheComponent,
+        AddCvComponent,
+        AutocompleteComponent,
+        MasterDetailCvComponent,
+        DetailsCvComponent,
+        DefaultImagePipe],
 })
 export default class CvModule {}
