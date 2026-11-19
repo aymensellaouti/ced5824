@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Cv } from '../model/cv.model';
-import { CvItemComponent } from '../cv-item/cv-item.component';
 import { NgFor, NgClass } from '@angular/common';
+import { CvItemComponent } from '../public-api';
+
 
 @Component({
     selector: 'app-listcvs',

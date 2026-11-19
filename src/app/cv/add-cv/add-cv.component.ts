@@ -100,13 +100,18 @@ export class AddCvComponent {
           this.toastr.success(`Le cv ${cv.firstname} ${cv.name}`);
         }),
         catchError((e) => {
-          this.toastr.error(
-            `Une erreur s'est produite, Veuillez contacter l'admin`
-          );
+          
           return EMPTY;
         })
       )
-      .subscribe();
+      .subscribe({
+        next: () => {
+
+        },
+        error: (e) => {
+
+        }
+      });
   }
 
   get name(): AbstractControl {
